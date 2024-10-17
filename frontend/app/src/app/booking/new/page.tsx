@@ -41,13 +41,18 @@ const NewBooking: React.FC = () => {
     if (!formData.end_time) newErrors.end_time = "End time is required";
     if (!formData.date) newErrors.date = "Date is required";
 
+    console.log("Start Time:", formData.start_time);
+    console.log("End Time:", formData.end_time);
+
     if (formData.start_time && formData.end_time) {
       const startMinutes = timeToMinutes(formData.start_time);
       const endMinutes = timeToMinutes(formData.end_time);
+
       if (endMinutes <= startMinutes) {
         newErrors.end_time = "End time must be later than start time";
       }
     }
+
     return newErrors;
   };
 
